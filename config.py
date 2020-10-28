@@ -10,7 +10,7 @@ class Config(object):
     # CSRF_ENABLED = True
     # Случайный ключ, которые будет исползоваться для подписи
     # данных, например cookies.
-    # SECRET_KEY = 'YOUR_RANDOM_SECRET_KEY'
+    SECRET_KEY = 'tempSECRET_KEY'
     # URI используемая для подключения к базе данных
     # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
