@@ -10,11 +10,12 @@ class Config(object):
     # CSRF_ENABLED = True
     # Случайный ключ, которые будет исползоваться для подписи
     # данных, например cookies.
-    SECRET_KEY = 'tempSECRET_KEY'
+    SECRET_KEY = 'ASDLFASHDFAHSDFJKLJL'
     # URI используемая для подключения к базе данных
     # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    BOOTSTRAP_SERVE_LOCAL = True
+    BOOTSTRAP_BOOTSWATCH_THEME = 'darkly'
 
 class ProductionConfig(Config):
     pass

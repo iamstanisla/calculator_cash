@@ -3,3 +3,8 @@
 
 #enviroment python
 venv/
+
+#python cache
+__pycache__
+app/__pycache__
+
