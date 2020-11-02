@@ -1,0 +1,64 @@
+{% from 'bootstrap/nav.html' import render_nav_item %}
+{% from 'bootstrap/utils.html' import render_messages %}
+<!doctype html>
+<html lang="en">
+<head>
+{% block head %}
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-
+˓→fit=no">
+{% block styles %}
+<!-- Bootstrap CSS -->
+{{ bootstrap.load_css() }}
+{% endblock %}
+
+<title>
+{% block title %}Counting cash{% endblock %}
+</title>
+
+{% endblock %}
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class=" collapse navbar-collapse text-right " id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto text-right">
+        {{ render_nav_item('index', 'Home') }}
+        {{ render_nav_item('register', 'Sign in') }}
+        {{ render_nav_item('logining', 'Log in') }}
+    	</ul>
+    </div>
+</nav>
+
+    <main class="container">
+        {{ render_messages(container=False, dismissible=True) }}
+        {% block content %}{% endblock %}
+    </main>
+
+
+    <footer class="text-center">
+        {% block footer %}
+            <small> &copy; 2020–<script>document.write(new Date().getFullYear())</script> Goduyko Stas</small>
+        {% endblock %}
+    </footer>
+
+
+{% block scripts %}
+<!-- Optional JavaScript -->
+{{ bootstrap.load_js() }}
+{% endblock %}
+
+
+
+</body>
+</html>
