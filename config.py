@@ -19,7 +19,6 @@ class Config(object):
 
 class ProductionConfig(Config):
     pass
-    provider='postgres', 
     PONY = {
     'provider': 'postgres',
     'user': 'test_countcash',
