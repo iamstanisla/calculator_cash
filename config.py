@@ -19,6 +19,15 @@ class Config(object):
 
 class ProductionConfig(Config):
     pass
+    provider='postgres', 
+    PONY = {
+    'provider': 'postgres',
+    'user': 'test_countcash',
+    'password': 'test1',
+    'host': 'localhost:5432',
+    'database': '',
+    'create_db': True
+}
 
 
 class DevelopmentConfig(Config):
