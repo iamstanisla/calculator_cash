@@ -3,8 +3,8 @@
 
 #enviroment python
 venv/
+activate_venv.bat
 
 #python cache
 __pycache__
 app/__pycache__
-

@@ -24,3 +24,8 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    PONY = {
+    'provider': 'sqlite',
+    'filename': 'dev_db.sqlite3',
+    'create_db': True
+}

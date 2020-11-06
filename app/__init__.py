@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from pony.flask import Pony
 
 
 def create_app(config_path='config.ProductionConfig'):
@@ -13,4 +14,6 @@ def create_app(config_path='config.ProductionConfig'):
         toolbar = DebugToolbarExtension()
         toolbar.init_app(app)
 
+    # database
+    Pony(app)
     return app
