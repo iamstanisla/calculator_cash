@@ -18,13 +18,12 @@ class Config(object):
     BOOTSTRAP_BOOTSWATCH_THEME = 'darkly'
 
 class ProductionConfig(Config):
-    pass
     PONY = {
     'provider': 'postgres',
     'user': 'test_countcash',
     'password': 'test1',
-    'host': 'localhost:5432',
-    'database': '',
+    'host': '127.0.0.1',
+    'database': 'test_db',
     'create_db': True
 }
 

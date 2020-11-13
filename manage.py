@@ -4,7 +4,7 @@ from flask import render_template
 
 
 app = create_app('config.DevelopmentConfig')
-
+# app = create_app()
 
 @app.route('/')
 def homepage():
