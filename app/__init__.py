@@ -1,3 +1,6 @@
+from app.users.controllers import users
+
+
 from logging.handlers import RotatingFileHandler
 from logging import Formatter
 import logging
@@ -31,4 +34,6 @@ def create_app(config_path='config.ProductionConfig'):
 
     # database
     Pony(app)
+
+    app.register_blueprint(users, url_prefix='/users')
     return app
