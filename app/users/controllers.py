@@ -9,6 +9,9 @@ from flask import request
 from flask import abort
 
 
+from app.users.forms import RegisterForm
+from app.users.forms import LoginForm
+
 users: Blueprint = Blueprint('users', __name__)
 
 
@@ -19,5 +22,11 @@ def index():
 
 @users.route('/login')
 def login():
-
+	login_form = LoginForm()
 	return 'page for logining'
+
+
+@users.route('/register')
+def register():
+	register_form = RegisterForm()
+	return 'page for reg'

@@ -8,4 +8,5 @@ MarkupSafe==1.1.1
 pony==0.7.13
 Werkzeug==1.0.1
 WTForms==2.1
+flask-wtf-0.14.3
 bootstrap-flask==1.5.1
