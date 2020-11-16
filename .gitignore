@@ -9,5 +9,5 @@ activate_venv.bat
 __pycache__
 app/__pycache__
 
-# temp files
-app/logs/app*.log
+# log files
+*.log

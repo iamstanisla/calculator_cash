@@ -1,5 +1,4 @@
 from app import create_app
-from app import log as logger
 
 
 from flask_script import Manager
@@ -10,10 +9,9 @@ app = create_app('config.DevelopmentConfig')
 # app = create_app()
 
 
-
 @app.route('/')
 def homepage():
-	logger.info('asdfasdf')
+	app.logger.info('asdfasdf')
 	return render_template('index.html')
 
 
