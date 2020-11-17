@@ -16,7 +16,7 @@ def homepage():
 
 @app.route('/index')
 def index():
-	return 'Index page'
+	return redirect(url_for('.homepage'))
 
 
 @app.route('/register')
@@ -33,5 +33,5 @@ manager = Manager(app)
 
 
 if __name__ == '__main__':
-	print(app.url_map)
+	# print(app.url_map)
 	manager.run()

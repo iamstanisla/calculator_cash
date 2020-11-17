@@ -1,5 +1,6 @@
 from app.users.controllers import users
-
+from app.users.models import login_manager
+from app.users.models import db
 
 from logging.handlers import RotatingFileHandler
 from logging import Formatter
@@ -19,6 +20,8 @@ formatter = Formatter(fmt=fmt_two)
 handler.setFormatter(formatter)
 
 
+
+
 def create_app(config_path='config.ProductionConfig'):
     app = Flask(__name__)
     app.config.from_object(config_path)
@@ -35,5 +38,10 @@ def create_app(config_path='config.ProductionConfig'):
     # database
     Pony(app)
 
+    login_manager.init_app(app)
+
     app.register_blueprint(users, url_prefix='/users')
+
+    db.bind(**app.config['PONY'])
+    db.generate_mapping(create_tables=True)
     return app
