@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}page registering{% endblock %}
+
+{% block content %}
+
+      <h1>Please registering</h1>
+      <br>
+      <form action="" method="post">
+        <div>{{ contact.first_name.label() }} {{ contact.first_name }}</div>
+        <div>{{ contact.second_name.label() }} {{ contact.second_name }}</div>
+        <div>{{ contact.username.label() }} {{ contact.username }}</div>
+        <div>{{ contact.email.label() }} {{ contact.email }}</div>
+        <div>{{ contact.password.label() }} {{ contact.password }}</div>
+        <div>{{ contact.submit }}</div>
+      </form>
+
+{% endblock %}

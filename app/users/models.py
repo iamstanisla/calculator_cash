@@ -10,7 +10,7 @@ login_manager.login_view = 'login'
 
 
 class User(db.Entity, UserMixin):
-    login = Required(str, unique=True)
+    username = Required(str, unique=True)
     password = Required(str)
     last_login = Optional(datetime)
 
