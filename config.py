@@ -7,7 +7,7 @@ class Config(object):
     # - 500 ошибку без какой либо дополнительной информации.
     DEBUG = False
     # Включение защиты против "Cross-site Request Forgery (CSRF)"
-    # CSRF_ENABLED = True
+    CSRF_ENABLED = False
     # Случайный ключ, которые будет исползоваться для подписи
     # данных, например cookies.
     SECRET_KEY = 'ASDLFASHDFAHSDFJKLJL'
