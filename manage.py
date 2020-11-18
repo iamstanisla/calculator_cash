@@ -21,7 +21,7 @@ def index():
 
 @app.route('/register')
 def register():
-	return 'register page'
+	return redirect(url_for('users.register'))
 
 
 @app.route('/logining')
