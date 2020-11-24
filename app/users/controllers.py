@@ -33,25 +33,26 @@ def index():
 @users.route('/login', methods=['GET', 'POST'])
 def login():
     contact_form = LoginForm(meta={'csrf': False})
-    if request.method == 'POST' and contact_form.validate():
+    if contact_form.validate_on_submit():
         username: str = contact_form.username.data
         password: str = contact_form.password.data
 
         possible_user: Union[User, None] = User.get(username=username, password=password)
         if not possible_user:
-            flash('check the entered data correctly', 'warning')
-            return render_template('users/login.html', contact=contact_form)
+            flash('Wrong username or password!', 'error')
+            return render_template('users/login.html', login_form=contact_form)
         elif possible_user.password == password:
             possible_user.last_login = datetime.now()
             login_user(possible_user)
+            flash('Authorization was successful!')
             current_app.logger.info(f'User \'{possible_user.username}\' was logged successfully! ')
             return redirect(url_for('homepage'))
         else:
             # current_app.logger.warning('User')
-            flash('Wrong password')
-            return redirect(url_for('.login'), contact=contact_form)
+            flash('Wrong username or password!', 'error')
+            return redirect(url_for('.login'), login_form=contact_form)
     else:
-        return render_template('users/login.html', contact=contact_form)
+        return render_template('users/login.html', login_form=contact_form)
 
 
 
@@ -59,7 +60,7 @@ def login():
 def register():
 
     reg_form = RegisterForm(meta={'csrf': False})
-    if request.method == 'POST' and reg_form.validate():
+    if reg_form.validate_on_submit():
         username = reg_form.username.data
         password = reg_form.password.data
         first_name = reg_form.first_name.data

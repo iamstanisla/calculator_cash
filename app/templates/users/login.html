@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form %}
 
 {% block title %}logining{% endblock %}
 
 {% block content %}
 
+      <h1>Please login</h1>
+      <br>
       {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -11,18 +14,8 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
-      <h1>Please login</h1>
-      <br>
-      <form action="" method="post">
-        <div>{{ contact.username.label() }} {{ contact.username }}</div>
-        <div>{{ contact.password.label() }} {{ contact.password }}</div>
-        <div>{{ contact.submit }}</div>
-<!--         <input type="text" placeholder="Email" name="email" value="{{
-          contact.email }}">
-         <input type="password" placeholder="Password" name="password" value="{{
-          contact.password }}">
-        <input class="btn btn-default" type="submit" value="Login">  -->
-      </form>
+      {{ render_form(form=login_form) }}
+
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
