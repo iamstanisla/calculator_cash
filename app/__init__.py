@@ -36,12 +36,12 @@ def create_app(config_path='config.ProductionConfig'):
         toolbar.init_app(app)
 
     # database
+    db.bind(**app.config['PONY'])
+    db.generate_mapping(create_tables=True)
     Pony(app)
 
     login_manager.init_app(app)
 
     app.register_blueprint(users, url_prefix='/users')
 
-    db.bind(**app.config['PONY'])
-    db.generate_mapping(create_tables=True)
     return app
