@@ -14,11 +14,6 @@ def homepage():
 	return render_template('index.html')
 
 
-@app.route('/index')
-def index():
-	return redirect(url_for('.homepage'))
-
-
 @app.route('/register')
 def register():
 	return redirect(url_for('users.register'))
