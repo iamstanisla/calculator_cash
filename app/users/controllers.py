@@ -28,7 +28,6 @@ users: Blueprint = Blueprint('users', __name__)
 
 
 @users.route('/')
-@login_required
 def index():
     return redirect(url_for('.login'))
 
