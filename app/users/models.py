@@ -6,7 +6,7 @@ from datetime import datetime
 
 db = Database()
 login_manager = LoginManager()
-login_manager.login_view = 'login'
+login_manager.login_view = 'users.login'
 
 
 class User(db.Entity, UserMixin):
