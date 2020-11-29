@@ -19,6 +19,8 @@ from flask import current_app
 from flask import request
 from flask import abort
 from flask_login import login_user
+from flask_login import login_required
+from flask_login import logout_user
 from pony.orm import flush
 
 
@@ -26,21 +28,22 @@ users: Blueprint = Blueprint('users', __name__)
 
 
 @users.route('/')
+@login_required
 def index():
-	return redirect(url_for('.login'))
+    return redirect(url_for('.login'))
 
 
 @users.route('/login', methods=['GET', 'POST'])
 def login():
-    contact_form = LoginForm(meta={'csrf': False})
-    if contact_form.validate_on_submit():
-        username: str = contact_form.username.data
-        password: str = contact_form.password.data
+    login_form = LoginForm(meta={'csrf': False})
+    if login_form.validate_on_submit():
+        username: str = login_form.username.data
+        password: str = login_form.password.data
 
         possible_user: Union[User, None] = User.get(username=username, password=password)
         if not possible_user:
             flash('Wrong username or password!', 'error')
-            return render_template('users/login.html', login_form=contact_form)
+            return render_template('users/login.html', login_form=login_form)
         elif possible_user.password == password:
             possible_user.last_login = datetime.now()
             login_user(possible_user)
@@ -50,15 +53,20 @@ def login():
         else:
             # current_app.logger.warning('User')
             flash('Wrong username or password!', 'error')
-            return redirect(url_for('.login'), login_form=contact_form)
+            return redirect(url_for('.login'), login_form=login_form)
     else:
-        return render_template('users/login.html', login_form=contact_form)
+        return render_template('users/login.html', login_form=login_form)
 
+
+@users.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('homepage'))
 
 
 @users.route('/register', methods=['GET', 'POST'])
 def register():
-
     reg_form = RegisterForm(meta={'csrf': False})
     if reg_form.validate_on_submit():
         username = reg_form.username.data
@@ -82,5 +90,5 @@ def register():
             flash('Successfully registered')
             return redirect(url_for('homepage'))
     else:
-        current_app.logger.info(f'error in time logining. error log: -> {reg_form.errors}.')
+        # current_app.logger.info(f'error in time logining. error log: -> {reg_form.errors}.')
         return render_template('users/register.html', contact=reg_form)
