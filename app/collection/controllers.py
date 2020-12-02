@@ -12,7 +12,7 @@ from werkzeug.utils import secure_filename
 collect = Blueprint('collection', __name__)
 
 
-@collect.route('/upload', method=['GET','POST'])
+@collect.route('/upload', methods=['GET','POST'])
 def upload():
 	upload_form = UploadUserImage(meta={'csrf': False})
 	if upload_form.validate_on_submite():
