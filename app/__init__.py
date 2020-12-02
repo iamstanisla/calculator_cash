@@ -1,4 +1,5 @@
 from app.users.controllers import users
+from app.collection.controllers import collect
 from app.users.models import login_manager
 from app.users.models import db
 
@@ -43,5 +44,6 @@ def create_app(config_path='config.ProductionConfig'):
     login_manager.init_app(app)
 
     app.register_blueprint(users, url_prefix='/users')
+    app.register_blueprint(collect, url_prefix='/collection')
 
     return app
