@@ -11,7 +11,7 @@ app = create_app('config.DevelopmentConfig')
 
 @app.route('/')
 def homepage():
-	return render_template('index.html')
+	return redirect(url_for('collection.upload'))
 
 
 @app.route('/register')
