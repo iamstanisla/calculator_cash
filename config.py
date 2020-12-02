@@ -16,6 +16,7 @@ class Config(object):
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
     BOOTSTRAP_SERVE_LOCAL = True
     BOOTSTRAP_BOOTSWATCH_THEME = 'darkly'
+    UPLOAD_FOLDER = 'app/static/user_images'
 
 class ProductionConfig(Config):
     PONY = {
