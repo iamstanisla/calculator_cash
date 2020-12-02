@@ -8,12 +8,17 @@
 {% block content %}
 
 
-<form id="upload-container" method="POST">
+<form id="upload-container" method="POST" enctype="multipart/form-data">
           <img id="upload-image" src="{{url_for('static', filename='img/upload.svg')}}" align="middle" />
           <div>
-               <input id="file-input" type="file" name="file" accept=".png, .jpeg, .jpg" multiple>
-               <label for="file-input">Выберите файл</label>
+
+                <!-- <input id="file-input" type="file" name="upload_form" accept=".png, .jpeg, .jpg" multiple> -->
+               {{ upload_form.upload() }}
+               <label for="upload">Выберите файл</label>
                <span>или перетащите его сюда</span>
+          </div>
+          <div>
+          	<input type="submit" value="Submit">
           </div>
 </form>
 
